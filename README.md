@@ -37,9 +37,7 @@ Northcoders' team have given you a list of user stories for the application:
 - As an admin, I want a visual indicator of ‘how many times’ a student has been on a block so that I can make sure we’re properly supporting students who are resitting.
 - As an admin, I want to clearly see how many students are on each block so that I can plan accordingly.
 - As an admin, I want to clearly see how many students are on the course so that I can plan accordingly.
-- As an admin, I want to see ‘graduation rates’ from each block so that I can prioritise which parts of the course to improve.
 - As an admin, I want to see a list of graduates so I can feel good about my job.
-- As an admin, I want to see what the average time through the course is for graduates so that I can monitor it over time.
 - As an admin, I want to be able to remove people from the course so that we can account for the occasional leaver.
 - As an admin, I want to see how many pathways through the course there have been so that we can communicate that to relevant stakeholders.
 
