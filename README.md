@@ -13,7 +13,7 @@
 Use [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started) to begin your project:
 
 ```bash
-npx create-react-app <project-name>
+npx create-react-app <project-name> --use-npm
 ```
 
 ## The Problem
