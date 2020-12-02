@@ -1,10 +1,10 @@
-
 import './App.css';
 import Title from './components/Title'
 import Nav from './components/Nav'
 import Welcome from './components/Welcome'
-import Current from './components/Current'
-import Grads from './components/Grads'
+import Current from './components/Current/Current'
+import Grads from './components/Grad/Grads'
+import Grad from './components/Grad/Grad'
 import { Router } from '@reach/router'
 
 function App() {
@@ -12,11 +12,12 @@ function App() {
     <div className="App">
       <Title />
       <Nav />
-      <Router>
+      { <Router>
         <Welcome path="/" />
-        <Current path="/current-students" />
+        {/* <Current path="/current-students" /> */}
         <Grads path="/graduates" />
-      </Router>
+        <Grad path="/graduates/:id" />
+      </Router>}
     </div>
   );
 }
