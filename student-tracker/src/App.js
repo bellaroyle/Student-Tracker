@@ -6,6 +6,7 @@ import Current from './components/Current/Current'
 import Grads from './components/Grad/Grads'
 import Grad from './components/Grad/Grad'
 import { Router } from '@reach/router'
+import PopUp from "./components/Grad/PopUp";
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
       { <Router>
         <Welcome path="/" />
         {/* <Current path="/current-students" /> */}
-        <Grads path="/graduates" />
-        <Grad path="/graduates/:id" />
+        <Grads path="/graduates/*" />
+
+        {/* <Grad path="/graduates/:id" /> */}
       </Router>}
     </div>
   );

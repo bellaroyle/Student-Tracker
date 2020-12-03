@@ -3,8 +3,9 @@ import axios from 'axios'
 import GradCard from './GradCard'
 import SortBy from './SortBy'
 
+
 class Grads extends Component {
-    state = { grads: [], isLoading: true }
+    state = { grads: [], isLoading: true, }
 
     componentDidMount = () => {
         this.fetchGrads().then(grads => {
@@ -21,6 +22,7 @@ class Grads extends Component {
                 return response.data.students
             })
     }
+
 
     render() {
         const { grads, isLoading } = this.state;
@@ -39,6 +41,7 @@ class Grads extends Component {
                         return <GradCard key={grad._id} {...grad} />
                     })}
                 </div>
+
             </div>
 
         );

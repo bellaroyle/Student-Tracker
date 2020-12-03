@@ -12,7 +12,7 @@ const SortBy = (props) => {
                 <option>Default</option>
                 <option>Name (A-Z)</option>
                 <option>Name (Z-A)</option>
-                <option>Starting cohort (Low to High)</option>
+                <option>Starting cohort (Low to High)()</option>
                 <option>Starting cohort (High to Low)</option>
             </select>
         </div>
