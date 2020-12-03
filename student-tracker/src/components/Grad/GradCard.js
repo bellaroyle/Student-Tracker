@@ -2,7 +2,8 @@
 import { Link } from '@reach/router'
 
 import React, { Component } from 'react';
-import PopUp from "./PopUp";
+// import PopUp from "./PopUp";
+import Grad from './Grad'
 
 
 class GradCard extends Component {
@@ -30,7 +31,7 @@ class GradCard extends Component {
 
                 </div>
                 <div>
-                    {this.state.seen ? <PopUp toggle={this.togglePop} id={_id} /> : null}
+                    {this.state.seen ? <Grad toggle={this.togglePop} id={_id} deleteGrad={this.props.deleteGrad} /> : <Link to='/graduates'></Link>}
                 </div>
             </>
         );

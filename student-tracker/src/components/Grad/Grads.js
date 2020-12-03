@@ -12,12 +12,32 @@ class Grads extends Component {
             this.setState({ grads, isLoading: false })
         })
     }
+
     addToQuery = (toSortBy) => {
-        console.log(toSortBy)
+        const sortArray = toSortBy.split(' ')
+
+        this.fetchGrads(sortArray[0], sortArray[1]).then(grads => {
+            this.setState({ grads, isLoading: false })
+        })
     }
 
-    fetchGrads = () => {
-        return axios.get('https://nc-student-tracker.herokuapp.com/api/students?graduated=true')
+    deleteGrad = (gradId) => {
+        return axios.delete(`https://nc-student-tracker.herokuapp.com/api/students/${gradId}`)
+            .then(() => {
+                this.fetchGrads().then(grads => {
+                    console.log(grads)
+                    this.setState({ grads, isLoading: false })
+                })
+            })
+    }
+
+    fetchGrads = (sort_by, order) => {
+        return axios.get('https://nc-student-tracker.herokuapp.com/api/students?graduated=true', {
+            params: {
+                sort_by,
+                order
+            }
+        })
             .then(response => {
                 return response.data.students
             })
@@ -38,7 +58,7 @@ class Grads extends Component {
                 <SortBy addToQuery={this.addToQuery} />
                 <div id="grad-container">
                     {grads.map(grad => {
-                        return <GradCard key={grad._id} {...grad} />
+                        return <GradCard key={grad._id} {...grad} deleteGrad={this.deleteGrad} />
                     })}
                 </div>
 

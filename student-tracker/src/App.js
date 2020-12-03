@@ -2,11 +2,11 @@ import './App.css';
 import Title from './components/Title'
 import Nav from './components/Nav'
 import Welcome from './components/Welcome'
-import Current from './components/Current/Current'
+// import Current from './components/Current/Current'
 import Grads from './components/Grad/Grads'
-import Grad from './components/Grad/Grad'
+// import Grad from './components/Grad/Grad'
 import { Router } from '@reach/router'
-import PopUp from "./components/Grad/PopUp";
+// import PopUp from "./components/Grad/PopUp";
 
 function App() {
   return (

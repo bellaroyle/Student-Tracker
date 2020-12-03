@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PopUp from "./PopUp";
 
 class Grad extends Component {
     state = { grad: {}, isLoading: true }
@@ -8,6 +9,14 @@ class Grad extends Component {
         this.fetchGrad().then(grad => {
             this.setState({ grad, isLoading: false })
         })
+    }
+    componentDidUpdate = (prevProps, prevState) => {
+        const newId = this.props.id !== prevProps.id
+        if (newId)
+            // this.prevProps.toggle()
+            this.fetchGrad().then(grad => {
+                this.setState({ grad, isLoading: false })
+            })
     }
 
     fetchGrad = () => {
@@ -36,34 +45,13 @@ class Grad extends Component {
         const { grad, isLoading } = this.state;
         if (isLoading) {
             return (
-                <div>
-                    loading ...
-                </div>
+                <div> </div>
             )
         }
         return (
             <div>
-                <h2>{grad.name}</h2>
-                <p>Student ID: {grad._id}</p>
-                <p>Starting cohort: {grad.startingCohort}</p>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Block</th>
-                            <th>Times Attempted</th>
-                        </tr>
-                        {this.formatBlockHistory(grad.blockHistory).map(pair => {
-                            return (
-                                <tr key={pair[0]}>
-                                    <td>{pair[0]}</td>
-                                    <td>{pair[1]}</td>
-                                </tr>
-                            )
-                        })}
+                <PopUp toggle={this.props.toggle} grad={grad} formatBlockHistory={this.formatBlockHistory} deleteGrad={this.props.deleteGrad} />
 
-                    </tbody>
-
-                </table>
             </div>
         );
     }
