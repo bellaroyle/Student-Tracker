@@ -25,7 +25,7 @@ class Current extends Component {
                 this.setState({ current: res.data.student })
             })
 
-        console.log(studentId)
+
     }
 
     fetchCurrent = () => {
