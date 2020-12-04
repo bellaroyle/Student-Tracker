@@ -11,9 +11,12 @@ class AddForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         const { name, startingCohort } = this.state
+
         return axios
             .post('https://nc-student-tracker.herokuapp.com/api/students', { name, startingCohort })
-            .then(() => {
+            .then((response) => {
+                this.props.addCurrent(response.data.student)
+
                 this.setState({
                     name: '',
                     startingCohort: '',
@@ -32,28 +35,33 @@ class AddForm extends Component {
         return (
             <>
                 <h2>Add a Student</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} id="add-form">
                     <label htmlFor="name">Student Name:</label>
+
 
                     <input
                         type='text'
                         name='name'
                         id='name'
                         onChange={this.handleChange}
-                    // value={this.state.name}
+                        value={this.state.name}
+                        required
                     />
-                    <br />
+
 
                     <label htmlFor="startingCohort">Starting Cohort:</label>
 
                     <input
-                        type='text'
+                        type='number'
                         name='startingCohort'
                         id='startingCohort'
                         onChange={this.handleChange}
+                        value={this.state.startingCohort}
+                        min="0"
+                        required
                     />
-                    <br />
-                    <button>Add</button>
+
+                    <button id="add-button">Add</button>
                 </form>
             </>
 

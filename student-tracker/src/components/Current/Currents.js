@@ -3,6 +3,7 @@ import axios from 'axios'
 import CurrentCard from './CurrentCard'
 import Total from '../Total'
 import SortBy from '../Grad/SortBy'
+import AddForm from './AddForm'
 
 class Currents extends Component {
     state = {
@@ -11,7 +12,9 @@ class Currents extends Component {
     }
 
     componentDidMount = () => {
+
         this.fetchCurrents().then(currents => {
+            // console.log(currents)
             this.setState({ currents, isLoading: false })
         })
     }
@@ -21,6 +24,13 @@ class Currents extends Component {
 
         this.fetchCurrents(sortArray[0], sortArray[1]).then(currents => {
             this.setState({ currents, isLoading: false })
+        })
+    }
+
+    addCurrent = (student) => {
+        const { blockHistory, ...restOfStudent } = student
+        this.setState((currState) => {
+            return { currents: [restOfStudent, ...currState.currents] }
         })
     }
 
@@ -56,6 +66,7 @@ class Currents extends Component {
         return (
             <div>
                 <SortBy addToQuery={this.addToQuery} />
+                <AddForm addCurrent={this.addCurrent} />
                 <Total students={this.state.currents} />
                 <div id="student-container">
                     {currents.map(current => {
