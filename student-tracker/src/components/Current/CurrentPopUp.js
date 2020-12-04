@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router'
-import axios from 'axios';
+// import axios from 'axios';
 
 // import Grad from './Grad';
 
@@ -12,6 +12,9 @@ class CurrentPopUp extends Component {
 
     handleDelete = () => {
         this.props.deleteCurrent(this.props.current._id)
+    }
+    handleProgress = () => {
+        this.props.progressCurrent(this.props.current._id)
     }
 
     render() {
@@ -41,6 +44,7 @@ class CurrentPopUp extends Component {
                         </tbody>
 
                     </table>
+                    <button className="progress" onClick={this.handleProgress} >Progress to next Block</button>
                     <button className='remove' onClick={() => { this.handleDelete() }}>Remove Student</button>
                 </div>
             </div>

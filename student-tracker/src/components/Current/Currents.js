@@ -4,6 +4,7 @@ import CurrentCard from './CurrentCard'
 import Total from '../Total'
 import SortBy from '../Grad/SortBy'
 import AddForm from './AddForm'
+import FilterBy from './FilterBy'
 
 class Currents extends Component {
     state = {
@@ -19,10 +20,14 @@ class Currents extends Component {
         })
     }
 
-    addToQuery = (toSortBy) => {
-        const sortArray = toSortBy.split(' ')
+    addToQuery = (toSortBy, toFilterBy) => {
+        let sortArray = [null, null]
+        if (toSortBy) {
+            sortArray = toSortBy.split(' ')
+        }
 
-        this.fetchCurrents(sortArray[0], sortArray[1]).then(currents => {
+
+        this.fetchCurrents(toFilterBy, sortArray[0], sortArray[1]).then(currents => {
             this.setState({ currents, isLoading: false })
         })
     }
@@ -42,9 +47,11 @@ class Currents extends Component {
                 })
             })
     }
-    fetchCurrents = (sort_by, order) => {
+
+    fetchCurrents = (block, sort_by, order) => {
         return axios.get('https://nc-student-tracker.herokuapp.com/api/students?graduated=false', {
             params: {
+                block,
                 sort_by,
                 order
             }
@@ -65,6 +72,7 @@ class Currents extends Component {
         }
         return (
             <div>
+                <FilterBy addToQuery={this.addToQuery} />
                 <SortBy addToQuery={this.addToQuery} />
                 <AddForm addCurrent={this.addCurrent} />
                 <Total students={this.state.currents} />

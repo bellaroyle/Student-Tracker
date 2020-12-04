@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router'
-import axios from 'axios';
+// import axios from 'axios';
 // import Grad from './Grad';
 
 class PopUp extends Component {

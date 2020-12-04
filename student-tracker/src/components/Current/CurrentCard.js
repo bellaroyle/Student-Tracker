@@ -27,7 +27,7 @@ class CurrentCard extends Component {
 
                 </div>
                 <div>
-                    {this.state.seen ? <Current toggle={this.togglePop} id={_id} deleteCurrent={this.props.deleteCurrent} /> : <Link to='/current-students'></Link>}
+                    {this.state.seen ? <Current toggle={this.togglePop} id={_id} deleteCurrent={this.props.deleteCurrent} progressCurrent={this.props.progressCurrent} /> : <Link to='/current-students'></Link>}
                 </div>
             </>
         );
