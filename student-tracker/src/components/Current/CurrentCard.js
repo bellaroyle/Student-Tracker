@@ -1,12 +1,8 @@
-
-import { Link } from '@reach/router'
-
 import React, { Component } from 'react';
-// import PopUp from "./PopUp";
-import Grad from './Grad'
+import { Link } from '@reach/router'
+import Current from './Current'
 
-
-class GradCard extends Component {
+class CurrentCard extends Component {
     state = { seen: false }
     togglePop = () => {
         this.setState((currentState) => {
@@ -20,8 +16,8 @@ class GradCard extends Component {
         const { name, startingCohort, _id } = this.props
         return (
             <>
-                <div className="grad-card">
-                    <Link to={(this.state.seen ? '/graduates' : `/graduates/${_id}`)}>
+                <div className="current-card">
+                    <Link to={(this.state.seen ? '/current-students' : `/current-students/${_id}`)}>
                         <button onClick={this.togglePop}>
                             <h2>{name}</h2>
                             <p>Cohort: {startingCohort}</p>
@@ -31,12 +27,11 @@ class GradCard extends Component {
 
                 </div>
                 <div>
-                    {this.state.seen ? <Grad toggle={this.togglePop} id={_id} deleteGrad={this.props.deleteGrad} /> : <Link to='/graduates'></Link>}
+                    {this.state.seen ? <Current toggle={this.togglePop} id={_id} deleteCurrent={this.props.deleteCurrent} /> : <Link to='/current-students'></Link>}
                 </div>
             </>
         );
     }
 }
 
-
-export default GradCard;
+export default CurrentCard;

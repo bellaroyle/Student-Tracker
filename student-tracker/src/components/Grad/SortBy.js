@@ -6,7 +6,7 @@ const SortBy = (props) => {
     }
     return (
         <div>
-            <label>Sort By</label>
+            <label className='sort'>Sort By</label>
             <select id="sort-by" onChange={(event) => { passOptionBack(event.target.value) }}>
                 {/* <option>Default</option> */}
                 <option value="startingCohort asc">Starting cohort (Low to High)(Default)</option>

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Welcome = () => {
     return (
-        <div>
-            Welcome to the student tracker app!
+        <div className='welcome'>
+            👨‍🎓 Welcome to the student tracker app! 👩‍🎓
         </div>
     );
 };

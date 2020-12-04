@@ -1,63 +1,119 @@
 .App {
   text-align: center;
+  background-color:white;
+  height: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 800;
 }
-
-#grad-container {
-  display: flex;
-  flex-wrap: wrap;
+.welcome{
+  margin-top: 10%;
+  font-size: 30px;
+  color: #7a7a7a;
+}
+h1{
+  margin-top: 0px;
+  padding-top: 50px;
+  text-decoration-line: underline;
+}
+.navbar button{
+  font-family: 'Courier New', Courier, monospace ;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+    margin:  auto 5%;
+    padding: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.navbar button:hover{ 
+  font-weight: 600;
+  text-decoration-line: underline;
+}
+@media screen and (max-width: 650px) {
+  .navbar button {
+    margin:  auto 30%;
+  }
   
 }
+#grad-container,#student-container{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2.5%
+}
 
-.grad-card {
+.grad-card, .current-card {
   margin: 10px auto;
   width: 150px;
   height: 100px;
+  border-color: white;
 }
-.grad-card h2 {
+
+.grad-card h2, .current-card h2 {
   font-size: 16px;
 }
-.grad-card button {
+.grad-card button, .current-card button {
   min-width: 150px;
   min-height: 100px;
+  max-width: 150px;
+  max-height: 100px;
+  display: inline block;
+  padding:0.2em 1.45em;
+  margin:0.1em;
+  border:0.15em solid #CCCCCC;
+  border-radius:1em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Courier New', Courier, monospace;
+  font-weight:500;
+  color:#000000;
+  background-color: rgb(232, 219, 221);
+  text-align:center;
+  position:static;
 }
-
-/* .modal{
-  width: 100%;
-  z-index: 9999;
-  color: aliceblue;
-  position: fixed;
-  display: flex;
+.grad-card button:hover, .current-card button:hover{
+  border-color:#7a7a7a;
+  cursor: pointer;
+  }
   
-  justify-content: center;
-border: 2px solid blue;
 
-}
+.grad-card button:focus, .current-card button:focus{
+  background-color:#c4c2c2;
+  border-color:#7a7a7a;
+  outline: none;
+  cursor: pointer;
+  }
+@media all and (max-width:30em){
+  .grad-card button, .current-card  button{
+     display:block;
+     margin:0.2em auto;
+  }
+ }  
 
-.modal_content{
-background-color: black;
-
-} */
 
 .modal {
   margin: 0 auto;
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 50%; /* Full width */
+  width: 40%; /* Full width */
   height: 50%; /* Full height */
   display: flex;
   justify-content: center;
   overflow: auto; /* Enable scroll if needed */
   background-color: white; /* Fallback color */
   border: black solid 2px;
-  position: absolute;
+  border-radius:0.5em;
+  position: fixed;
   float: left;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-/* Modal Content/Box */
+
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
@@ -67,12 +123,45 @@ background-color: black;
 }
 
 
+.modal-content table, td, th
+{
+  border:1px solid black;
+  padding:15px;
+}
+
+.name_on_popup
+{
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 30px;
+
+}
+
+.remove{
+  margin-top: 15px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #aaa;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  border-radius: 2em;
+}
+.remove:hover,
+.remove:focus{
+  background-color: rgb(210, 210, 210);
+  color: rgb(163, 21, 21);
+  cursor: pointer;
+}
+
 .close {
   color: #aaa;
   float: right;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
-  
+  margin-top: 20px;
+  border-radius: 2em;
 }
 
 .close:hover,
@@ -80,4 +169,23 @@ background-color: black;
   color: black;
   text-decoration: none;
   cursor: pointer;
+  outline: none;
+}
+
+#sort-by{
+  font-family: 'Courier New', Courier, monospace ;
+  border-radius: 2em;
+    margin: 20px;
+    padding: 3px;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+#sort-by:focus {
+  outline: none;
+}
+.sort{
+  font-size: 12pt;
+  font-weight: 600;
+  color: #7a7a7a;
 }

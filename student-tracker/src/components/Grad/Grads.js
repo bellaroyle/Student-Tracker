@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import GradCard from './GradCard'
 import SortBy from './SortBy'
-
+import Total from '../Total'
 
 class Grads extends Component {
     state = { grads: [], isLoading: true, }
@@ -56,6 +56,7 @@ class Grads extends Component {
         return (
             <div>
                 <SortBy addToQuery={this.addToQuery} />
+                <Total students={this.state.grads} />
                 <div id="grad-container">
                     {grads.map(grad => {
                         return <GradCard key={grad._id} {...grad} deleteGrad={this.deleteGrad} />

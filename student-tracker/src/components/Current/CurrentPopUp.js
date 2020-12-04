@@ -1,36 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router'
 import axios from 'axios';
+
 // import Grad from './Grad';
 
-class PopUp extends Component {
+class CurrentPopUp extends Component {
 
     handleClick = () => {
         this.props.toggle()
     }
 
     handleDelete = () => {
-        console.log(this.props.deleteGrad)
-        this.props.deleteGrad(this.props.grad._id)
+        this.props.deleteCurrent(this.props.current._id)
     }
 
     render() {
-        const { grad, formatBlockHistory } = this.props
+        const { current, formatBlockHistory } = this.props
         return (
             <div className="modal">
                 <div className="modal_content">
-                    <Link to='/graduates'><button className="close" onClick={this.handleClick}>X</button></Link>
-
-                    <h2 className="name_on_popup">{grad.name}</h2>
-                    <p>Student ID: {grad._id}</p>
-                    <p>Starting cohort: {grad.startingCohort}</p>
+                    <Link to='/current-students'><button className="close" onClick={this.handleClick}>X</button></Link>
+                    <h2>{current.name}</h2>
+                    <p>Student ID: {current._id}</p>
+                    <p>Starting cohort: {current.startingCohort}</p>
                     <table>
                         <tbody>
                             <tr>
                                 <th>Block</th>
                                 <th>Times Attempted</th>
                             </tr>
-                            {formatBlockHistory(grad.blockHistory).map(pair => {
+                            {formatBlockHistory(current.blockHistory).map(pair => {
                                 return (
                                     <tr key={pair[0]}>
                                         <td>{pair[0]}</td>
@@ -49,4 +48,4 @@ class PopUp extends Component {
     }
 }
 
-export default PopUp;
+export default CurrentPopUp;
