@@ -24,8 +24,12 @@ class Current extends Component {
             .then((res) => {
                 this.setState({ current: res.data.student })
             })
-
-
+    }
+    resitCurrent = (studentId) => {
+        return axios.patch(`https://nc-student-tracker.herokuapp.com/api/students/${studentId}?progress=false`)
+            .then((res) => {
+                this.setState({ current: res.data.student })
+            })
     }
 
     fetchCurrent = () => {
@@ -59,7 +63,7 @@ class Current extends Component {
         }
         return (
             <div>
-                <CurrentPopUp toggle={this.props.toggle} current={current} formatBlockHistory={this.formatBlockHistory} deleteCurrent={this.props.deleteCurrent} progressCurrent={this.progressCurrent} />
+                <CurrentPopUp toggle={this.props.toggle} current={current} formatBlockHistory={this.formatBlockHistory} deleteCurrent={this.props.deleteCurrent} progressCurrent={this.progressCurrent} resitCurrent={this.resitCurrent} />
 
             </div>
         );

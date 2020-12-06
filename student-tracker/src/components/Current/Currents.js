@@ -9,25 +9,31 @@ import FilterBy from './FilterBy'
 class Currents extends Component {
     state = {
         currents: [],
-        isLoading: true
+        isLoading: true,
+        cohorts: []
     }
 
     componentDidMount = () => {
 
         this.fetchCurrents().then(currents => {
-            // console.log(currents)
-            this.setState({ currents, isLoading: false })
+            const newCohorts = [...this.state.cohorts]
+            currents.forEach(student => {
+                if (!newCohorts.includes(student.startingCohort)) {
+                    newCohorts.push(student.startingCohort)
+                }
+            })
+            this.setState({ currents, isLoading: false, cohorts: newCohorts })
         })
     }
 
-    addToQuery = (toSortBy, toFilterBy) => {
+
+    addToQuery = (toSortBy, blockFilter, cohortFilter) => {
         let sortArray = [null, null]
         if (toSortBy) {
             sortArray = toSortBy.split(' ')
         }
 
-
-        this.fetchCurrents(toFilterBy, sortArray[0], sortArray[1]).then(currents => {
+        this.fetchCurrents(blockFilter, cohortFilter, sortArray[0], sortArray[1]).then(currents => {
             this.setState({ currents, isLoading: false })
         })
     }
@@ -43,15 +49,22 @@ class Currents extends Component {
         return axios.delete(`https://nc-student-tracker.herokuapp.com/api/students/${studentId}`)
             .then(() => {
                 this.fetchCurrents().then(currents => {
-                    this.setState({ currents, isLoading: false })
+                    const newCohorts = [...this.state.cohorts]
+                    currents.forEach(student => {
+                        if (!newCohorts.includes(student.startingCohort)) {
+                            newCohorts.push(student.startingCohort)
+                        }
+                    })
+                    this.setState({ currents, isLoading: false, cohorts: newCohorts })
                 })
             })
     }
 
-    fetchCurrents = (block, sort_by, order) => {
+    fetchCurrents = (block, cohort, sort_by, order) => {
         return axios.get('https://nc-student-tracker.herokuapp.com/api/students?graduated=false', {
             params: {
                 block,
+                cohort,
                 sort_by,
                 order
             }
@@ -72,7 +85,7 @@ class Currents extends Component {
         }
         return (
             <div>
-                <FilterBy addToQuery={this.addToQuery} />
+                <FilterBy addToQuery={this.addToQuery} cohorts={this.state.cohorts} />
                 <SortBy addToQuery={this.addToQuery} />
                 <AddForm addCurrent={this.addCurrent} />
                 <Total students={this.state.currents} />

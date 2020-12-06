@@ -6,8 +6,15 @@ import { Link } from '@reach/router'
 
 class CurrentPopUp extends Component {
 
+    // componentDidUpdate() {
+    //     console.log('updating')
+    //     window.location.reload(true);
+
+    // }
+
     handleClick = () => {
         this.props.toggle()
+        // window.location.reload(true);
     }
 
     handleDelete = () => {
@@ -15,6 +22,9 @@ class CurrentPopUp extends Component {
     }
     handleProgress = () => {
         this.props.progressCurrent(this.props.current._id)
+    }
+    handleResit = () => {
+        this.props.resitCurrent(this.props.current._id)
     }
 
     render() {
@@ -44,8 +54,11 @@ class CurrentPopUp extends Component {
                         </tbody>
 
                     </table>
-                    <button className="progress" onClick={this.handleProgress} >Progress to next Block</button>
-                    <button className='remove' onClick={() => { this.handleDelete() }}>Remove Student</button>
+                    <div id="popup-buttons">
+                        <button className="progress" onClick={this.handleProgress} >Progress to next Block</button>
+                        <button className="resit" onClick={this.handleResit}>Resit Current Block</button>
+                        <Link to='/current-students'><button className='remove' onClick={() => { this.handleDelete() }}>Remove Student</button></Link>
+                    </div>
                 </div>
             </div>
         );

@@ -17,7 +17,7 @@ h1{
 }
 .navbar button{
   font-family: 'Courier New', Courier, monospace ;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   border: none;
     margin:  auto 5%;
@@ -32,7 +32,7 @@ h1{
   font-weight: 600;
   text-decoration-line: underline;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 870px) {
   .navbar button {
     margin:  auto 20%;
   }
@@ -149,23 +149,42 @@ h1{
   margin-bottom: 30px;
 
 }
+#popup-buttons {
+  display: flex; 
+  flex-direction: column;
+  margin: 0 auto;
+  width: 250px;
+}
 
-.remove{
-  margin-top: 15px;
-  padding: 5px;
+.remove, .progress, .resit{
+  margin-top: 5px;
+  width: 250px;
+  padding: 3px;
   padding-left: 20px;
   padding-right: 20px;
   color: #aaa;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
-  margin-top: 20px;
   border-radius: 2em;
 }
 .remove:hover,
-.remove:focus{
+.remove:focus,
+.progress:hover,
+.progress:focus,
+.resit:hover,
+.resit:focus
+{
   background-color: rgb(210, 210, 210);
   color: rgb(163, 21, 21);
   cursor: pointer;
+}
+.progress:hover,
+.progress:focus{
+  color: green;
+}
+.resit:hover,
+.resit:focus{
+  color: black;
 }
 
 .close {
@@ -186,7 +205,7 @@ h1{
   outline: none;
 }
 
-#sort-by{
+#sort-by, #block, #cohort{
   font-family: 'Courier New', Courier, monospace ;
   border-radius: 2em;
     margin: 20px;
@@ -195,13 +214,16 @@ h1{
     background-color: rgb(255, 255, 255);
     cursor: pointer;
 }
-#sort-by:focus {
+#sort-by, #cohort {
+  margin-top:0;
+}
+#sort-by:focus,#block:focus , #cohort:focus {
   outline: none;
 }
-.sort{
+.sort, .filter{
   font-size: 12pt;
   font-weight: 600;
-  color: #7a7a7a;
+  color: #5c5c5c;
 }
 
 #add-form {
